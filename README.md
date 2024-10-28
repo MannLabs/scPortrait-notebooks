@@ -6,7 +6,7 @@
 [badge-tests]: https://img.shields.io/github/actions/workflow/status/sophiamaedler/scPortrait-notebooks/test.yaml?branch=main
 [badge-docs]: https://img.shields.io/readthedocs/scPortrait-notebooks
 
-NThis repository hosts all tnotebooks for scPortrait.
+This repository hosts all notebooks for scPortrait.
 
 ## Getting started
 
