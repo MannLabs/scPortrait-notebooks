@@ -3,18 +3,24 @@ build-backend = "hatchling.build"
 requires = [ "hatchling" ]
 
 [project]
-name = "scPortrait-notebooks"
-version = "0.0.1"
-description = "This repository hosts all tnotebooks for scPortrait."
+name = "scportrait"
+version = "1.0.0"
+description = "Computational framework to generate single cell datasets from raw microscopy images."
 readme = "README.md"
-license = { file = "LICENSE" }
-maintainers = [
-  { name = "A", email = "maedler@biochem.mpg.de" },
-]
+requires-python = ">=3.10, <3.12"
+license = {file = "LICENSE"}
+keywords = ["single-cell", "image analysis", "spatial omics", "deep learning", "image representation"]
+dynamic = ["dependencies", "optional-dependencies"]
 authors = [
-  { name = "A" },
+  {name = "Sophia Maedler"},
+  {name = "Niklas Schmacke"},
+  {name = "Altana Namsaraeva"},
+  {name = "Georg Wallmann"},
 ]
-requires-python = ">=3.10"
+maintainers = [
+  {name = "Sophia Maedler", email = "maedler@biochem.mpg.de"},
+]
+
 classifiers = [
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.10",
