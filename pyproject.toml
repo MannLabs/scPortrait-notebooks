@@ -5,7 +5,7 @@ requires = [ "hatchling" ]
 [project]
 name = "scPortrait-notebooks"
 version = "0.0.1"
-description = "NThis repository hosts all tnotebooks for scPortrait."
+description = "This repository hosts all tnotebooks for scPortrait."
 readme = "README.md"
 license = { file = "LICENSE" }
 maintainers = [
