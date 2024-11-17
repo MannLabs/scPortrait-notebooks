@@ -7,4 +7,4 @@ dependencies:
   - graph-tool==2.68
   - pip
   - pip:
-    - scportrait @ git+https://github.com/MannLabs/scPortrait@master
+    - scportrait @ git+https://github.com/MannLabs/scPortrait@main
