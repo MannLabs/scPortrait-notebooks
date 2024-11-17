@@ -1,0 +1,10 @@
+name: example-environment-scportrait
+channels:
+  - conda-forge
+dependencies:
+  - python==3.10
+  - openjdk
+  - graph-tool==2.68
+  - pip
+  - pip:
+    - scportrait @ git+https://github.com/MannLabs/scPortrait@master
