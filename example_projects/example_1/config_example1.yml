@@ -90,7 +90,7 @@ ShardedWGASegmentation:
 ShardedCytosolSegmentationCellpose:
     input_channels: 2
     output_masks: 2
-    shard_size: 1000000 # maxmimum number of pixel per tile
+    shard_size: 2000000 # maxmimum number of pixel per tile
     overlap_px: 100
     nGPUs: 1
     chunk_size: 50 # chunk size for chunked HDF5 storage. is needed for correct caching and high performance reading. should be left at 50.
