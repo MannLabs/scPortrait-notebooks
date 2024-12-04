@@ -42,6 +42,3 @@ TimecourseHDF5CellExtraction:
     threads: 80 # threads used in multithreading
     image_size: 128 # image size in pixel
     cache: "."
-    hdf5_rdcc_nbytes: 5242880000 # 5gb 1024 * 1024 * 5000
-    hdf5_rdcc_w0: 1
-    hdf5_rdcc_nslots: 50000
