@@ -9,6 +9,16 @@ CytosolSegmentationCellpose:
     match_masks: True
     filtering_threshold_mask_matching: 0.95
     filter_masks_size: False
+CytosolSegmentationDownsamplingCellpose:
+    cache: "."
+    downsampling_factor: 2
+    nucleus_segmentation:
+        model: "nuclei"
+    cytosol_segmentation:
+        model: "cyto2"
+    match_masks: True
+    filtering_threshold_mask_matching: 0.95
+    filter_masks_size: False
 ShardedCytosolSegmentationCellpose:
     shard_size: 120000000 # maxmimum number of pixel per tile
     overlap_px: 100
