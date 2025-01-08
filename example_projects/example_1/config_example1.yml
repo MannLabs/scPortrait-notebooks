@@ -1,7 +1,5 @@
 ---
 name: "Cellpose Segmention Example"
-input_channels: 3
-output_channels: 5
 CytosolSegmentationCellpose:
     cache: "."
     nucleus_segmentation:
