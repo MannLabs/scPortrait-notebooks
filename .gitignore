@@ -1,6 +1,7 @@
 .DS_Store
 project/
 project_sharded/
+project_cytosol_only/
 project_WGA/
 debug_plot_*
 
