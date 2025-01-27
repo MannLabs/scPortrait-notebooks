@@ -1,5 +1,6 @@
 .DS_Store
 project/
+project_downsampling/
 project_sharded/
 project_cytosol_only/
 project_cytosol_only_sharded/
