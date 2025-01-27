@@ -1,88 +1,108 @@
 ---
-name: "Cellpose Segmention Example"
+name: "Cellpose Segmentation"
+input_channels: 3
+output_channels: 5
 CytosolSegmentationCellpose:
+    input_channels: 2
+    output_masks: 2
+    shard_size: 120000000 # maxmimum number of pixel per tile
+    overlap_px: 100
+    nGPUs: 1
+    chunk_size: 50 # chunk size for chunked HDF5 storage. is needed for correct caching and high performance reading. should be left at 50.
+    threads: 1 # number of shards / tiles segmented at the same size. should be adapted to the maximum amount allowed by memory.
     cache: "."
+    lower_quantile_normalization:   0.001
+    upper_quantile_normalization:   0.999
+    median_filter_size: 6 # Size in pixels
     nucleus_segmentation:
         model: "nuclei"
     cytosol_segmentation:
         model: "cyto2"
-    match_masks: True
-    filtering_threshold_mask_matching: 0.95
-    filter_masks_size: False
-CytosolOnlySegmentationCellpose:
-    cache: "."
-    cytosol_segmentation:
-        model: "cyto2"
+    chunk_size: 50
     match_masks: True
     filtering_threshold_mask_matching: 0.95
     filter_masks_size: False
 ShardedCytosolSegmentationCellpose:
-    shard_size: 2000000 # maxmimum number of pixel per tile
+    input_channels: 2
+    output_masks: 2
+    shard_size: 120000000 # maxmimum number of pixel per tile
     overlap_px: 100
     nGPUs: 1
+    chunk_size: 50 # chunk size for chunked HDF5 storage. is needed for correct caching and high performance reading. should be left at 50.
     threads: 2 # number of shards / tiles segmented at the same size. should be adapted to the maximum amount allowed by memory.
     cache: "."
+    lower_quantile_normalization:   0.001
+    upper_quantile_normalization:   0.999
+    median_filter_size: 6 # Size in pixels
     nucleus_segmentation:
         model: "nuclei"
     cytosol_segmentation:
         model: "cyto2"
+    chunk_size: 50
     match_masks: True
+    filtering_threshold_mask_matching: 0.95
     filter_masks_size: False
-ShardedCytosolOnlySegmentationCellpose:
-    shard_size: 2000000 # maxmimum number of pixel per tile
+CytosolOnlySegmentationCellpose:
+    input_channels: 2
+    output_masks: 1
+    shard_size: 120000000 # maxmimum number of pixel per tile
     overlap_px: 100
     nGPUs: 1
-    threads: 2 # number of shards / tiles segmented at the same size. should be adapted to the maximum amount allowed by memory.
+    chunk_size: 50 # chunk size for chunked HDF5 storage. is needed for correct caching and high performance reading. should be left at 50.
+    threads: 1 # number of shards / tiles segmented at the same size. should be adapted to the maximum amount allowed by memory.
     cache: "."
+    lower_quantile_normalization:   0.001
+    upper_quantile_normalization:   0.999
+    median_filter_size: 6 # Size in pixels
     cytosol_segmentation:
         model: "cyto2"
+    chunk_size: 50
     match_masks: True
+    filtering_threshold_mask_matching: 0.95
+    filter_masks_size: False
+ShardedCytosolOnlySegmentationCellpose:
+    input_channels: 2
+    output_masks: 2
+    shard_size: 120000000 # maxmimum number of pixel per tile
+    overlap_px: 100
+    nGPUs: 1
+    chunk_size: 50 # chunk size for chunked HDF5 storage. is needed for correct caching and high performance reading. should be left at 50.
+    threads: 2 # number of shards / tiles segmented at the same size. should be adapted to the maximum amount allowed by memory.
+    cache: "."
+    lower_quantile_normalization:   0.001
+    upper_quantile_normalization:   0.999
+    median_filter_size: 6 # Size in pixels
+    nucleus_segmentation:
+        model: "nuclei"
+    cytosol_segmentation:
+        model: "cyto2"
+    chunk_size: 50
+    match_masks: True
+    filtering_threshold_mask_matching: 0.95
     filter_masks_size: False
 HDF5CellExtraction:
     compression: True
     threads: 80 # threads used in multithreading
-    image_size: 128 # image size in pixel
+    image_size: 110 # image size in pixel
+    normalization_range: None #turn of percentile normalization for cells -> otherwise normalise out differences for the alexa647 channel
     cache: "."
-MLClusterClassifier:
-    batch_size: 900
-    inference_device: "cpu"
-    dataloader_worker_number: 10 #needs to be 0 if using cpu
-    network: "autophagy_classifier"
-    label: "Autophagy_15h_classifier2_1"
-    encoders: ["forward"]
-    channel_selection: 4
+    hdf5_rdcc_nbytes: 5242880000 # 5gb 1024 * 1024 * 5000
+    hdf5_rdcc_w0: 1
+    hdf5_rdcc_nslots: 50000
 CellFeaturizer:
+    channel_classification: 4
     batch_size: 900
-    dataloader_worker_number: 10 #needs to be 0 if using cpu
+    dataloader_worker_number: 0 #needs to be 0 if using cpu
     inference_device: "cpu"
-    label: "CellFeaturizer"
+    screen_label: "Ch3_Featurization"
 LMDSelection:
-    threads: 20
     cache: "."
-    processes_cell_sets: 10 #number of threads for generating multiple cell_sets
-
-    # defines the channel used for generating cutting masks
-    # segmentation.hdf5 => labels => segmentation_channel
-    # When using WGA segmentation:
-    #    0 corresponds to nuclear masks
-    #    1 corresponds to cytosolic masks.
-    segmentation_channel: "seg_all_nucleus"
-
-    # dilation of the cutting mask in pixel
+    threads: 20
+    processes_cell_sets: 2
+    segmentation_channel: 0
     shape_dilation: 16
-
-    # number of datapoints which are averaged for smoothing
-    # the number of datapoints over an distance of n pixel is 2*n
     smoothing_filter_size: 25
-
-    # fold reduction of datapoints for compression
     poly_compression_factor: 30
-
-    # can be "none", "greedy", or "hilbert"
     path_optimization: "hilbert"
-
-    # number of nearest neighbours for optimized greedy search
     greedy_k: 15
-
-    # hilbert curve order
     hilbert_p: 7
