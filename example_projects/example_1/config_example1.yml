@@ -53,7 +53,7 @@ MLClusterClassifier:
     channel_selection: 4
 CellFeaturizer:
     batch_size: 900
-    dataloader_worker_number: 0 #needs to be 0 if using cpu
+    dataloader_worker_number: 10 #needs to be 0 if using cpu
     inference_device: "cpu"
     label: "CellFeaturizer"
 LMDSelection:
@@ -66,7 +66,7 @@ LMDSelection:
     # When using WGA segmentation:
     #    0 corresponds to nuclear masks
     #    1 corresponds to cytosolic masks.
-    segmentation_channel: 0
+    segmentation_channel: "seg_all_nucleus"
 
     # dilation of the cutting mask in pixel
     shape_dilation: 16
