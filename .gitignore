@@ -1,4 +1,7 @@
 .DS_Store
+project_cytosol_only/
+project_cytosol_only_sharded/
+project_downsampling/
 project/
 project_sharded/
 project_WGA/
