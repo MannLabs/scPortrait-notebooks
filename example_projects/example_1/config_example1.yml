@@ -87,6 +87,12 @@ CellFeaturizer:
     dataloader_worker_number: 0 #needs to be 0 if using cpu
     inference_device: "cpu"
     screen_label: "Ch3_Featurization"
+ConvNeXtFeaturizer:
+    cache: "."
+    channel_selection: 4
+    batch_size: 900
+    dataloader_worker_number: 0 #needs to be 0 if using cpu
+    inference_device: "mps"
 LMDSelection:
     cache: "."
     threads: 20
