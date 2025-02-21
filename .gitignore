@@ -3,6 +3,7 @@ project_cytosol_only/
 project_cytosol_only_sharded/
 project_cytosol_only_custom_segmentation/
 project_downsampling/
+project_downsampling_sharded/
 project/
 project_sharded/
 project_cropped_rois/
