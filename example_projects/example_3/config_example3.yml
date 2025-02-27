@@ -49,7 +49,6 @@ DAPISegmentation:
         max_size: 5000 # maximum nucleus area in pixel
         contact_filter: 0.5 # minimum nucleus contact with background
     chunk_size: 50
-    filter_masks_size: False
 CytosolSegmentationCellpose:
     cache: "."
     nucleus_segmentation:
@@ -57,13 +56,14 @@ CytosolSegmentationCellpose:
     cytosol_segmentation:
         model: "cyto2"
     match_masks: True
-    filtering_threshold_mask_matching: 0.95
-    filter_masks_size: False
 DAPISegmentationCellpose:
     cache: "."
     nucleus_segmentation:
         model: "nuclei"
-    filter_masks_size: False
+CytosolOnlySegmentationCellpose:
+    cache: "."
+    cytosol_segmentation:
+        model: "cyto2"
 HDF5CellExtraction:
     threads: 80 # threads used in multithreading
     image_size: 128 # image size in pixel
