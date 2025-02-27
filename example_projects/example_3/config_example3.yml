@@ -56,6 +56,8 @@ CytosolSegmentationCellpose:
     cytosol_segmentation:
         model: "cyto2"
     match_masks: True
+    filtering_threshold_mask_matching: 0.95
+    filter_masks_size: False
 DAPISegmentationCellpose:
     cache: "."
     nucleus_segmentation:
@@ -67,5 +69,6 @@ CytosolOnlySegmentationCellpose:
 HDF5CellExtraction:
     threads: 80 # threads used in multithreading
     image_size: 128 # image size in pixel
-    normalization_range: None #turn of percentile normalization for cells -> otherwise normalise out differences for the alexa647 channel
+    normalize_output: True
+    normalization_range: [0.01, 0.99] #turn of percentile normalization for cells -> otherwise normalise out differences for the alexa647 channel
     cache: "."

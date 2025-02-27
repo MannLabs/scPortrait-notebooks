@@ -33,6 +33,7 @@ WGASegmentation:
     filter_masks_size: True
 ShardedWGASegmentation:
     shard_size: 4000000 # Average number of pixel per tile. 10.000 * 10.000 pixel are recommended. Can be adapted to memory and computation needs.
+    overlap_px: 100 # overlap in pixel between tiles
     threads: 1 # number of shards / tiles segmented at the same size. should be adapted to the maximum amount allowed by memory.
     lower_quantile_normalization:   0.001
     upper_quantile_normalization:   0.999
