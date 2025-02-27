@@ -5,7 +5,7 @@ CytosolSegmentationCellpose:
     nucleus_segmentation:
         model: "nuclei"
     cytosol_segmentation:
-        model: "cyto2"
+        model_path: "/Users/sophia/Desktop/custom_cellpose_model.cpkt"
         normalize: True
         flow_threshold: 0.6
         cellprob_threshold: -0.5
@@ -15,7 +15,7 @@ CytosolSegmentationCellpose:
 CytosolOnlySegmentationCellpose:
     cache: "."
     cytosol_segmentation:
-        model: "cyto2"
+        model_path: "/Users/sophia/Desktop/custom_cellpose_model.cpkt"
         normalize: True
         flow_threshold: 0.6
         cellprob_threshold: -0.5
@@ -31,7 +31,7 @@ ShardedCytosolSegmentationCellpose:
     nucleus_segmentation:
         model: "nuclei"
     cytosol_segmentation:
-        model: "cyto2"
+        model_path: "/Users/sophia/Desktop/custom_cellpose_model.cpkt"
         normalize: True
         flow_threshold: 0.6
         cellprob_threshold: -0.5
@@ -44,7 +44,7 @@ ShardedCytosolOnlySegmentationCellpose:
     threads: 2 # number of shards / tiles segmented at the same size. should be adapted to the maximum amount allowed by memory.
     cache: "."
     cytosol_segmentation:
-        model: "cyto2"
+        model_path: "/Users/sophia/Desktop/custom_cellpose_model.cpkt"
         normalize: True
         flow_threshold: 0.6
         cellprob_threshold: -0.5
