@@ -1,6 +1,7 @@
 .DS_Store
 project_cytosol_only/
-project_cytosol_only_sharded/
+project_sharded_cytosol_only/
+project_sharded_WGA/
 project_cytosol_only_custom_segmentation/
 project_downsampling/
 project_downsampling_sharded/
@@ -10,4 +11,6 @@ project_cropped_rois/
 project_WGA/
 debug_plot_*
 local/
+segmentation_workflows/
+
 
