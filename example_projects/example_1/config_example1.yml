@@ -56,6 +56,7 @@ CellFeaturizer:
     dataloader_worker_number: 10 #needs to be 0 if using cpu
     inference_device: "cpu"
     label: "CellFeaturizer"
+    cache: "."
 LMDSelection:
     threads: 20
     cache: "."
