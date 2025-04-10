@@ -6,16 +6,10 @@ CytosolSegmentationCellpose:
         model: "nuclei"
     cytosol_segmentation:
         model: "cyto2"
-    match_masks: True
-    filtering_threshold_mask_matching: 0.95
-    filter_masks_size: False
 CytosolOnlySegmentationCellpose:
     cache: "."
     cytosol_segmentation:
         model: "cyto2"
-    match_masks: True
-    filtering_threshold_mask_matching: 0.95
-    filter_masks_size: False
 ShardedCytosolSegmentationCellpose:
     shard_size: 2000000 # maxmimum number of pixel per tile
     overlap_px: 100
@@ -26,8 +20,6 @@ ShardedCytosolSegmentationCellpose:
         model: "nuclei"
     cytosol_segmentation:
         model: "cyto2"
-    match_masks: True
-    filter_masks_size: False
 ShardedCytosolOnlySegmentationCellpose:
     shard_size: 2000000 # maxmimum number of pixel per tile
     overlap_px: 100
@@ -36,27 +28,27 @@ ShardedCytosolOnlySegmentationCellpose:
     cache: "."
     cytosol_segmentation:
         model: "cyto2"
-    match_masks: True
-    filter_masks_size: False
 HDF5CellExtraction:
     compression: True
     threads: 80 # threads used in multithreading
     image_size: 128 # image size in pixel
     cache: "."
 MLClusterClassifier:
-    batch_size: 900
-    inference_device: "cpu"
+    batch_size: 100
     dataloader_worker_number: 10 #needs to be 0 if using cpu
     network: "autophagy_classifier"
     label: "Autophagy_15h_classifier2_1"
     encoders: ["forward"]
     channel_selection: 4
 CellFeaturizer:
-    batch_size: 900
+    batch_size: 100
     dataloader_worker_number: 10 #needs to be 0 if using cpu
-    inference_device: "cpu"
-    label: "CellFeaturizer"
     cache: "."
+ConvNeXtFeaturizer:
+    batch_size: 100
+    dataloader_worker_number: 10 #needs to be 0 if using cpu
+    cache: "."
+    channel_selection: 4
 LMDSelection:
     threads: 20
     cache: "."
