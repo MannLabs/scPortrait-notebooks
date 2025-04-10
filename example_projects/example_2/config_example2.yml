@@ -1,14 +1,10 @@
 ---
-name: "Cellpose Segmentation"
 CytosolSegmentationCellpose:
     cache: "."
     nucleus_segmentation:
         model: "nuclei"
     cytosol_segmentation:
         model: "cyto2"
-    match_masks: True
-    filtering_threshold_mask_matching: 0.95
-    filter_masks_size: False
 CytosolSegmentationDownsamplingCellpose:
     cache: "."
     downsampling_factor: 2
@@ -16,9 +12,6 @@ CytosolSegmentationDownsamplingCellpose:
         model: "nuclei"
     cytosol_segmentation:
         model: "cyto2"
-    match_masks: True
-    filtering_threshold_mask_matching: 0.95
-    filter_masks_size: False
 ShardedCytosolSegmentationDownsamplingCellpose:
     downsampling_factor: 2
     shard_size: 120000000 # maxmimum number of pixel per tile
@@ -30,19 +23,14 @@ ShardedCytosolSegmentationDownsamplingCellpose:
         model: "nuclei"
     cytosol_segmentation:
         model: "cyto2"
-    match_masks: True
-    filtering_threshold_mask_matching: 0.95
-    filter_masks_size: False
 HDF5CellExtraction:
     threads: 80 # threads used in multithreading
     image_size: 110 # image size in pixel
-    normalize_output: True 
     cache: "."
 CellFeaturizer:
     batch_size: 900
     dataloader_worker_number: 0 #needs to be 0 if using cpu
     inference_device: "cpu"
-    label: "CellFeaturizer"
 LMDSelection:
     processes: 20
     segmentation_channel: 0
